@@ -58,6 +58,9 @@ def main():
     if(nDim == 3):
         print("Pair(s) of closest points indicated by different color")
         Helper.Visualizer3D(n, points, BF_closestIdx)
+    elif(nDim == 2):
+        print("Pair(s) of closest points indicated by different color")
+        Helper.Visualizer2D(n, points, BF_closestIdx)      
     tableHead = ["No", "Metrics", "Brute Force", "Divide and Conquer"]
     print('---------------------------------------------------------------------------------')
     print('| {:2} | {:^26} | {:^20} | {:^20} |'.format(*tableHead))

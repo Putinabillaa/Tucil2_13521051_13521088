@@ -67,3 +67,15 @@ def Visualizer3D(n, points, closestIdx):
     ax.set_zlabel('Z')
     plt.show()
 
+def Visualizer2D(n, points, closestIdx):
+    getColors = lambda x: ["#%06x" % random.randint(100, 0xFFFFFF) for i in range(x)]
+    colors = getColors(n)
+    for i in range(0, n):
+        plt.scatter(points[i][0], points[i][1], color='black', marker='o')
+        for j in range (0, len(closestIdx)):
+            if(i == closestIdx[j][0] or i == closestIdx[j][1]): 
+                plt.scatter(points[i][0], points[i][1], color=colors[j], marker='o')
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.show()
+
