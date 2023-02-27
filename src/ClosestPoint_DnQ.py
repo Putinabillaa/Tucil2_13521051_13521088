@@ -1,16 +1,12 @@
-N = int(input("Masukkan dimensi: "))
-jumlahPerhitungan = 0
-Pair = []
-
 def jarak(A,B):
     sum2 = 0
-    for i in range(N):
+    for i in range(len(A)):
         sum2 = (A[i] - B[i])**2
     d = (sum2)**1/2
     return d
 
 def addPair(A,B):
-    Pair.append([A],[B])
+    Pair.append([[A],[B]])
 
 def split(P,i,f):
     batas = i + (f-i)/2
@@ -23,6 +19,9 @@ def split(P,i,f):
             P2.append(P[i])
     return P1,P2
 
+def printPair(pair):
+    for i in range(len(pair)):
+        print(pair[i])
 
 # ALGORITMA UTAMA
 def closestPair(Points,N):
@@ -34,8 +33,8 @@ def closestPair(Points,N):
         return d
     else:
         S1,S2 = split(Points,xi,xf)               # bagi menjadi 2
-        d1 = closestPair(S1,N/2)
-        d2 = closestPair(S2,N/2)
+        d1 = closestPair(S1,len(S1))
+        d2 = closestPair(S2,len(S2))
         d = min(d1,d2)
         
         pleft = S1[len(S1)-1]
@@ -46,4 +45,11 @@ def closestPair(Points,N):
         
         return d
     
-# belum kelar:(
+# ALGORITMA UTAMA
+Pair = []
+# N = int(input("Masukkan dimensi: "))
+points = [[1,2],[3,4],[7,6],[8,9]]
+jumlahPerhitungan = 0
+
+closestPair(points,4)
+printPair(Pair)
