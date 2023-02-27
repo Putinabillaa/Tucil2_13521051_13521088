@@ -11,6 +11,7 @@ def ListRandomizer(nDim, n, maxRange, minRange):
     for i in range(0, n):
         for j in range (0, nDim):
             points[i][j] = random.uniform(minRange, maxRange)
+    print(points)
     return points
 
 '''

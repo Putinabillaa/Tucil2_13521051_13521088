@@ -2,7 +2,7 @@ import Helper
 
 def ClosestPoint_Bf(nDim, points, maxRange, minRange):
     totalOps = 0
-    minDist = Helper.EucDist(nDim, [maxRange, maxRange, maxRange], [minRange, minRange, minRange])
+    minDist = (maxRange-minRange)*nDim
     dist = [[0 for i in range(len(points))] for j in range(len(points))]
     closestIdx = []
     for i in range(0, len(points) - 1):
