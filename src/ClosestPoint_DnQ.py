@@ -6,7 +6,7 @@ def jarak(A,B):
     sum2 = 0
     for i in range(N):
         sum2 = (A[i] - B[i])**2
-    d = (sum)**1/2
+    d = (sum2)**1/2
     return d
 
 def addPair(A,B):
