@@ -3,17 +3,17 @@
 ## Table of Contents
 
 - [Description](#description)
-- [Program Requirements & Installation](#program requirements & installation)
-- [Get Started](#get started)
+- [Program Requirements and Installation](#program-requirements-and-installation)
+- [Get Started](#get-started)
 - [Author](#author)
 
 ## Description
 This is a program to find pair(s) of closest points (by euclidean distance) in n dimensional space. This program use divide & conquer algorithm by splitting points into two regions with a slit and then proceed to find the closest points in either first region, second region, or in the 'crossing-slit' region. This program also implementing brute force algorithm and compare it to the divide & conquer algorithm. The comparison done with two metrics: execution time & the number of euclidean distance operations. For points in 3D and 2D, this program provides visualisation using scatter plot with pair(s) of closest points indicated by different color. This programs also providing coordinates input from file and from randomization.
 
-## Program Requirements & Installation
-- Python (all of the current version should be compatible)
-https://www.python.org/downloads/
-- Matplotlib Library
+## Program Requirements and Installation
+1. Python (all of the current version should be compatible)
+- https://www.python.org/downloads/
+2. Matplotlib Library
 ```markdown
 // installation 
 python -m pip install -U pip
@@ -37,7 +37,9 @@ python -m pip install -U matplotlib
 5. If you choose to randomize, the program will start the calculation.
 6. Else, the program will ask you to input a file path.
 7. After the calculation done, pair(s) of closest points and its distance will be outputed. 
-8. Then, a visualisation scatter plot will pop up (only for 3D and 2D) with pair(s) of closest points indicated by different color. You can toggle, zoom, configure, and save the plot with provided buttons.
+8. Then, a visualisation scatter plot will pop up (only for 3D and 2D) with pair(s) of closest points indicated by different color. You can toggle, zoom, configure, and save the plot with provided buttons.!
+<img width="319" alt="Screen Shot 2023-02-28 at 03 39 11" src="https://user-images.githubusercontent.com/109022993/221681488-2dcf37b5-5927-467a-9c20-8ca5b6ee6cfb.png">
+
 9. To see the comparison between using brute force algorithm and divide and conquer, close the plot.
 10. After that you'll be opted to continue other calculation or exot the program.
   ```markdown
