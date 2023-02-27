@@ -8,15 +8,13 @@ def jarak(A,B):
 def addPair(A,B):
     Pair.append([[A],[B]])
 
-def split(P,i,f):
-    batas = i + (f-i)/2
+def split(P,N):
     P1 = []
     P2 = []
-    for i in range(len(P)):
-        if (P[i][0] < batas):
-            P1.append(P[i])
-        else:
-            P2.append(P[i])
+    for i in range(int(N/2)):
+        P1.append(P[i])
+    for j in range(i,N):
+        P2.append(P[i])
     return P1,P2
 
 def printPair(pair):
@@ -24,17 +22,15 @@ def printPair(pair):
         print(pair[i])
 
 # ALGORITMA UTAMA
-def closestPair(Points,N):
-    xi = Points[0][0]
-    xf = Points[N-1][0]                           # ambil koordinat x, tentukan panjang lebar x yang mungkin
+def closestPair(Points,N):                       # ambil koordinat x, tentukan panjang lebar x yang mungkin
     if (N == 2):
         d = jarak(Points[0], Points[1])
         addPair(Points[0],Points[1])
         return d
     else:
-        S1,S2 = split(Points,xi,xf)               # bagi menjadi 2
-        d1 = closestPair(S1,len(S1))
-        d2 = closestPair(S2,len(S2))
+        S1,S2 = split(Points,N)               # bagi menjadi 2
+        d1 = closestPair(S1,int(N/2))
+        d2 = closestPair(S2,int(N/2))
         d = min(d1,d2)
         
         pleft = S1[len(S1)-1]
@@ -48,7 +44,7 @@ def closestPair(Points,N):
 # ALGORITMA UTAMA
 Pair = []
 # N = int(input("Masukkan dimensi: "))
-points = [[1,2],[3,4],[7,6],[8,9]]
+points = [[1,2,3],[3,4,5],[7,6,7],[8,9,10]]
 jumlahPerhitungan = 0
 
 closestPair(points,4)
