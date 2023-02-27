@@ -10,7 +10,7 @@ def jarak(A,B):
     return d
 
 def addPair(A,B):
-    Pair = Pair + [[A],[B]]
+    Pair.append([A],[B])
 
 def split(P,i,f):
     batas = i + (f-i)/2
@@ -18,9 +18,9 @@ def split(P,i,f):
     P2 = []
     for i in range(len(P)):
         if (P[i][0] < batas):
-            P1 = P1 + [P[i]]
+            P1.append(P[i])
         else:
-            P2 = P2 + [P[i]]
+            P2.append(P[i])
     return P1,P2
 
 
