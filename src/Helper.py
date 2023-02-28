@@ -24,6 +24,21 @@ def EucDist(nDim, p1, p2):
     return sqrt(sum)
 
 '''
+Method untuk mengurutkan koordinat berdasarkan sumbunya
+i = 0 --> sumbu x
+i = 1 --> sumbu y
+dst.
+'''
+def sortAxis(points,i):
+    for j in range(len(points)):
+        min = j
+        for k in range(j+1,len(points)):
+            if (points[k][i] < points[j][i]):
+                min = k
+        points[min], points[j] = points[j], points[min]
+    return points
+
+'''
 Method untuk membaca file berisi koordinat titik
 '''
 def ReadFile(nDim, n, maxRange, minRange):
