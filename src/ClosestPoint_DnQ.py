@@ -8,9 +8,7 @@ def closestPair(Ndim, Points, N, totalOps):                       # ambil koordi
         d, Pair, totalOps = ClosestPoint_BruteForce.ClosestPoint_Bf(Ndim, Points)
         return d, Pair, totalOps
     else:
-        S = Helper.sortAxis(Points, 0)
-        S1,S2 = Helper.split(S)                 # bagi menjadi 2
-
+        S1,S2 = Helper.split(Points)                 # bagi menjadi 2
         d1, Pair1, totalOps1 = closestPair(Ndim, S1, len(S1), totalOps)
         d2, Pair2, totalOps2 = closestPair(Ndim, S2, len(S2), totalOps)
         totalOps += totalOps1 + totalOps2 

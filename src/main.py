@@ -51,8 +51,9 @@ def main():
         BF_minDist, BF_pair, BF_totalOps = ClosestPoint_BruteForce.ClosestPoint_Bf(nDim, points)
         BF_execTime = '%.5f'%(time.process_time() - start_time)
         # Pemangginan method DnC
+        sorted_points= Helper.sortAxis(points, 0)
         start_time = time.process_time()
-        DnC_minDist, DnC_pair, DnC_totalOps = ClosestPoint_DnQ.closestPair(nDim, points, n, 0)
+        DnC_minDist, DnC_pair, DnC_totalOps = ClosestPoint_DnQ.closestPair(nDim, sorted_points, n, 0)
         DnC_execTime = '%.5f'%(time.process_time() - start_time)
         # Pemanggilan method visualiser & Output
         print("The Minimum Distance is: " + str(DnC_minDist))
