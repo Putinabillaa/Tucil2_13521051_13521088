@@ -67,15 +67,16 @@ Method untuk memvisualisasikan titik-titik 2D dalam
 bentuk scatter plot, untuk pasangan titik-titik terdekat 
 diberi warna berbeda (tidak hitam)
 '''
-def Visualizer3D(n, points, closestIdx):
+def Visualizer3D(n, points, Pair):
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
     getColors = lambda x: ["#%06x" % random.randint(100, 0xFFFFFF) for i in range(x)]
     colors = getColors(n)
     for i in range(0, n):
         ax.scatter(points[i][0], points[i][1], points[i][2], color='black', marker='o')
-        for j in range (0, len(closestIdx)):
-            if(i == closestIdx[j][0] or i == closestIdx[j][1]): 
+        for j in range (0, len(Pair)):
+            if((points[i][0] == Pair[0][0] and points[i][1] == Pair[0][1] and points[i][2] == Pair[0][2]) or 
+            (points[i][0] == Pair[1][0] and points[i][1] == Pair[1][1] and points[i][2] == Pair[1][2])): 
                 ax.scatter(points[i][0], points[i][1], points[i][2], color=colors[j], marker='o')
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
@@ -87,20 +88,21 @@ Method untuk memvisualisasikan titik-titik 2D dalam
 bentuk scatter plot, untuk pasangan titik-titik terdekat 
 diberi warna berbeda (tidak hitam)
 '''
-def Visualizer2D(n, points, closestIdx):
+def Visualizer2D(n, points, Pair):
     getColors = lambda x: ["#%06x" % random.randint(100, 0xFFFFFF) for i in range(x)]
     colors = getColors(n)
     for i in range(0, n):
         plt.scatter(points[i][0], points[i][1], color='black', marker='o')
-        for j in range (0, len(closestIdx)):
-            if(i == closestIdx[j][0] or i == closestIdx[j][1]): 
-                plt.scatter(points[i][0], points[i][1], color=colors[j], marker='o')
+        for j in range (0, len(Pair)):
+            if((points[i][0] == Pair[j][0][0] and points[i][1] == Pair[j][0][1] and points[i][2] == Pair[j][0][2]) or 
+            (points[i][0] == Pair[j][1][0] and points[i][1] == Pair[j][1][1] and points[i][2] == Pair[j][1][2])): 
+                plt.scatter(points[i][0], points[i][1], points[i][2], color=colors[j], marker='o')
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.show()
 
 '''
-Method untuk menampilkan slash screen
+Method untuk menampilkan splash screen
 '''
 def SplashScreen():
     print("-------------------")

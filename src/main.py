@@ -1,6 +1,7 @@
 import time
 import Helper
 import ClosestPoint_BruteForce
+import ClosestPoint_DnQ
 
 def main(): 
     Quit = False
@@ -47,22 +48,22 @@ def main():
 
         # Pemanggilan method bruteforce
         start_time = time.process_time()
-        BF_minDist, BF_closestIdx, BF_totalOps = ClosestPoint_BruteForce.ClosestPoint_Bf(nDim, points, maxRange, minRange)
+        BF_minDist, BF_pair, BF_totalOps = ClosestPoint_BruteForce.ClosestPoint_Bf(nDim, points, maxRange, minRange)
         BF_execTime = '%.5f'%(time.process_time() - start_time)
 
         # Pemangginan method DnC
         DnC_execTime = 0
-        DnC_totalOps = 0
+        DnC_minDist, Dnc_pair, DnC_totalOps = ClosestPoint_DnQ.closestPair(nDim, points, n, 0)
 
         # Pemanggilan method visualiser & Output
-        print("The Minimum Distance is: ")
+        print("The Minimum Distance is: " + str(DnC_minDist) + " " + str(BF_minDist))
         print("Between points: ")
         if(nDim == 3):
             print("Pair(s) of closest points indicated by different color")
-            Helper.Visualizer3D(n, points, BF_closestIdx)
+            Helper.Visualizer3D(n, points,  Dnc_pair)
         elif(nDim == 2):
             print("Pair(s) of closest points indicated by different color")
-            Helper.Visualizer2D(n, points, BF_closestIdx)      
+            Helper.Visualizer2D(n, points,  Dnc_pair)      
         tableHead = ["No", "Metrics", "Brute Force", "Divide and Conquer"]
         print('---------------------------------------------------------------------------------')
         print('| {:2} | {:^26} | {:^20} | {:^20} |'.format(*tableHead))

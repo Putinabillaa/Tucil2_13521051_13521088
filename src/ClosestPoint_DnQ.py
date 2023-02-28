@@ -11,16 +11,17 @@ def split(P):
 
 # ALGORITMA UTAMA
 # closestPair, untuk 2 sumbu
-def closestPair(Points,N):                       # ambil koordinat x, tentukan panjang lebar x yang mungkin
+def closestPair(Ndim, Points, N, totalOps):                       # ambil koordinat x, tentukan panjang lebar x yang mungkin
     if (N <= 3):
         if (len(Points) == 1):
-            return None, None
+            return None, None, 0
         else:
             S = Helper.sortAxis(Points,0)
             print(len(S))
-            d = Helper.EucDist(3,Points[0], Points[1])
+            totalOps += 1
+            d = Helper.EucDist(Ndim, Points[0], Points[1])
             Pair = [Points[0],Points[1]]
-            return d, Pair
+            return d, Pair, totalOps
     else:
         d = None
         Pair = None
@@ -36,11 +37,13 @@ def closestPair(Points,N):                       # ambil koordinat x, tentukan p
         print(SS3)
         print(SS4)
 
-        d1, Pair1 = closestPair(SS1,len(SS1))
-        d2, Pair2 = closestPair(SS2,len(SS2))
-        d3, Pair3 = closestPair(SS3,len(SS3))
-        d4, Pair4 = closestPair(SS4,len(SS4))
+        d1, Pair1, totalOps1 = closestPair(Ndim, SS1, len(SS1), totalOps)
+        d2, Pair2, totalOps2 = closestPair(Ndim, SS2, len(SS2), totalOps)
+        d3, Pair3, totalOps3 = closestPair(Ndim, SS3, len(SS3), totalOps)
+        d4, Pair4, totalOps4 = closestPair(Ndim, SS4, len(SS4), totalOps)
         
+        totalOps += totalOps1 + totalOps2 + totalOps3 + totalOps4
+
         if (d1 is not None and d2 is not None and d3 is not None and d4 is not None):
             if (d1 == min(d1,d2,d3,d4)):
                 d = d1
@@ -98,15 +101,8 @@ def closestPair(Points,N):                       # ambil koordinat x, tentukan p
                             k = k + 1
                         
                         if (check):
-                            if(d is None or Helper.EucDist(3,temp[i], temp[j]) < d):
-                                d = Helper.EucDist(3,temp[i], temp[j])
+                            if(d is None or Helper.EucDist(Ndim,temp[i], temp[j]) < d):
+                                totalOps += 1
+                                d = Helper.EucDist(Ndim,temp[i], temp[j])
                                 Pair = [temp[i], temp[j]]
-        return d, Pair
-
-
-points = [[1,2,3],[7,6,7],[8,9,10],[11,2,4],[12,3,2],[15,15,12]]
-jumlahPerhitungan = 0
-
-d, Pair = closestPair(points,6)
-print(d)
-print(Pair)
+        return d, Pair, totalOps
