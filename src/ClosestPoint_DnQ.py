@@ -81,7 +81,7 @@ def closestPair(Ndim, Points, N, totalOps):                       # ambil koordi
             i = i + 1
 
         i = 0
-        while (i < len(SS4) and ((d is None) or (SS2[i][0] > batasx - d and SS2[i][1] < batasy + d))):
+        while (i < len(SS4) and ((d is None) or (SS4[i][0] > batasx - d and SS4[i][1] < batasy + d))):
             if (SS4[i] not in temp):
                 temp.append(SS4[i])
             i = i + 1
