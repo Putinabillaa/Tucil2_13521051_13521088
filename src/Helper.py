@@ -11,7 +11,6 @@ def ListRandomizer(nDim, n, maxRange, minRange):
     for i in range(0, n):
         for j in range (0, nDim):
             points[i][j] = random.uniform(minRange, maxRange)
-    print(points)
     return points
 
 '''
@@ -49,7 +48,7 @@ def ReadFile(nDim, n, maxRange, minRange):
     return points
 
 '''
-Method untuk memvisualisasikan titik-titik 3D dalam 
+Method untuk memvisualisasikan titik-titik 2D dalam 
 bentuk scatter plot, untuk pasangan titik-titik terdekat 
 diberi warna berbeda (tidak hitam)
 '''
@@ -68,6 +67,11 @@ def Visualizer3D(n, points, closestIdx):
     ax.set_zlabel('Z')
     plt.show()
 
+'''
+Method untuk memvisualisasikan titik-titik 2D dalam 
+bentuk scatter plot, untuk pasangan titik-titik terdekat 
+diberi warna berbeda (tidak hitam)
+'''
 def Visualizer2D(n, points, closestIdx):
     getColors = lambda x: ["#%06x" % random.randint(100, 0xFFFFFF) for i in range(x)]
     colors = getColors(n)
@@ -79,4 +83,12 @@ def Visualizer2D(n, points, closestIdx):
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.show()
+
+'''
+Method untuk menampilkan slash screen
+'''
+def SplashScreen():
+    print("-------------------")
+    print("  Closest Points!  ")
+    print("-------------------")
 
