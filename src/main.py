@@ -56,7 +56,7 @@ def main():
         DnC_minDist, DnC_pair, DnC_totalOps = ClosestPoint_DnQ.closestPair(nDim, sorted_points, n, 0)
         DnC_execTime = '%.5f'%(time.process_time() - start_time)
         # Pemanggilan method visualiser & Output
-        print("The Minimum Distance is: " + str(DnC_minDist))
+        print("The Minimum Distance is: " + str(DnC_minDist) + str(BF_minDist))
         print("Between points: ")
         for x in DnC_pair:
             print(x[0])

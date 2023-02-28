@@ -37,10 +37,10 @@ def closestPair(Ndim, Points, N, totalOps):                       # ambil koordi
             if (S2[i] not in temp):
                 temp.append(S2[i])
             i = i + 1
-
+        temp = Helper.sortAxis(temp, 1)
         if (len(temp) > 1):
             for i in range(len(temp)):
-                for j in range(i + 1, len(temp)):
+                for j in range(i + 1, min(i + 7, len(temp))):
                     if (temp[i] != temp[j]):
                         check = True
                         k = 0
