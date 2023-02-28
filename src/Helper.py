@@ -33,10 +33,22 @@ def sortAxis(points,i):
     for j in range(len(points)):
         min = j
         for k in range(j+1,len(points)):
-            if (points[k][i] < points[j][i]):
+            if (points[k][i] < points[min][i]):
                 min = k
-        points[min], points[j] = points[j], points[min]
+        points[j], points[min] = points[min], points[j]
     return points
+
+'''
+Method membagi array menjadi 2 bagian
+'''
+def split(P):
+    P1 = []
+    P2 = []
+    for i in range(int(len(P)/2)):
+        P1.append(P[i])
+    for j in range(int(len(P)/2),len(P)):
+        P2.append(P[j])
+    return P1,P2
 
 '''
 Method untuk membaca file berisi koordinat titik
@@ -75,8 +87,8 @@ def Visualizer3D(n, points, Pair):
     for i in range(0, n):
         ax.scatter(points[i][0], points[i][1], points[i][2], color='black', marker='o')
         for j in range (0, len(Pair)):
-            if((points[i][0] == Pair[0][0] and points[i][1] == Pair[0][1] and points[i][2] == Pair[0][2]) or 
-            (points[i][0] == Pair[1][0] and points[i][1] == Pair[1][1] and points[i][2] == Pair[1][2])): 
+            if((points[i][0] == Pair[j][0][0] and points[i][1] == Pair[j][0][1] and points[i][2] == Pair[j][0][2]) or 
+            (points[i][0] == Pair[j][1][0] and points[i][1] == Pair[j][1][1] and points[i][2] == Pair[j][1][2])): 
                 ax.scatter(points[i][0], points[i][1], points[i][2], color=colors[j], marker='o')
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
@@ -94,9 +106,9 @@ def Visualizer2D(n, points, Pair):
     for i in range(0, n):
         plt.scatter(points[i][0], points[i][1], color='black', marker='o')
         for j in range (0, len(Pair)):
-            if((points[i][0] == Pair[j][0][0] and points[i][1] == Pair[j][0][1] and points[i][2] == Pair[j][0][2]) or 
-            (points[i][0] == Pair[j][1][0] and points[i][1] == Pair[j][1][1] and points[i][2] == Pair[j][1][2])): 
-                plt.scatter(points[i][0], points[i][1], points[i][2], color=colors[j], marker='o')
+            if((points[i][0] == Pair[j][0][0] and points[i][1] == Pair[j][0][1]) or 
+            (points[i][0] == Pair[j][1][0] and points[i][1] == Pair[j][1][1])): 
+                plt.scatter(points[i][0], points[i][1], color=colors[j], marker='o')
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.show()
@@ -108,4 +120,3 @@ def SplashScreen():
     print("-------------------")
     print("  Closest Points!  ")
     print("-------------------")
-

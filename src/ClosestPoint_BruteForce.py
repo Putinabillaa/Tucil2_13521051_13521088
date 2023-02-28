@@ -1,19 +1,16 @@
 import Helper
 
-def ClosestPoint_Bf(nDim, points, maxRange, minRange):
+def ClosestPoint_Bf(nDim, points):
     totalOps = 0
-    minDist = (maxRange-minRange)*nDim
-    dist = [[0 for i in range(len(points))] for j in range(len(points))]
+    minDist = Helper.EucDist(nDim, points[0], points[1])
     Pair = []
-    for i in range(0, len(points) - 1):
+    for i in range(0, len(points)):
         for j in range(i + 1, len(points)):
-            dist[i][j] = Helper.EucDist(nDim, points[i], points[j])
-            if(dist[i][j] < minDist):
-                minDist = dist[i][j]
+            dist = Helper.EucDist(nDim, points[i], points[j])
+            if(dist < minDist):
+                minDist = dist
+                Pair = [(points[i], points[j])]
+            elif(dist == minDist):
+                Pair.append((points[i], points[j]))
             totalOps += 1
-    for i in range(0, len(points) - 1):
-        for j in range(i + 1, len(points)):
-            if(dist[i][j] == minDist):
-                Pair.append([points[i], points[j]])
     return minDist, Pair, totalOps
-
